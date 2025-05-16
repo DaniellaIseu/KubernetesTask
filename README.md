@@ -32,7 +32,7 @@ papiImage: widgetario/products-api:21.03
 sapiImage: widgetario/stock-api:21.03
 
 ##Part 6
-Part 6: Ingress Configuration
+Ingress Configuration
 Added ingress.yaml template.
 Used widgetario.uat as the domain.
 
@@ -52,13 +52,6 @@ If pods show ImagePullBackOff:
 Ensure correct image name and tag in uat.yaml.
 Ensure image is publicly available on Docker Hub.
 
-
-
-
 kubectl get pods -n widg-uat
 Forward port and access the app:
-
-bash
-Copy
-Edit
 kubectl port-forward -n widg-uat deployment/widg-uat-widgetario 8080:80
