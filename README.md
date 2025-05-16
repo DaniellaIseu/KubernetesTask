@@ -26,8 +26,21 @@
 1. Ensure you have Kubernetes and Helm installed and configured.
 ![Screenshot 2025-05-16 174650](https://github.com/user-attachments/assets/cdb795d5-97bc-4590-864b-a42bc418285c)
 
+2. Edit the `uat.yaml` to reference your Docker Hub images if needed.
 
 3. Deploy the Helm chart:
 
 ```bash
 helm install widg-uat ./helm/widgetario -f hackathon/files/helm/uat.yaml -n widg-uat --create-namespace
+Check pod status:
+
+bash
+Copy
+Edit
+kubectl get pods -n widg-uat
+Forward port and access the app:
+
+bash
+Copy
+Edit
+kubectl port-forward -n widg-uat deployment/widg-uat-widgetario 8080:80
