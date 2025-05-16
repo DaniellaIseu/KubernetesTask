@@ -14,29 +14,47 @@
 *This demonstrates the working nodes and services in the Kubernetes cluster.*
 
 
-#Part 7 
+## Part 3
+Application Components
+Identified microservices: Products API, Products DB, Stock API, and Web.
+
+## Part 4 
+Helm Introduction
+Created Helm chart for application components in widgetario/.
+Defined templates for deployment, service, ingress, and values.yaml.
+
+##Part 5
+Helm Chart Customization
+Customized chart with UAT-specific values in uat.yaml.
+'''bash 
+webImage: widgetario/web:21.03-v2
+papiImage: widgetario/products-api:21.03
+sapiImage: widgetario/stock-api:21.03
+
+##Part 6
+Part 6: Ingress Configuration
+Added ingress.yaml template.
+Used widgetario.uat as the domain.
+
+##Part 7 
 ## Files and Structure
 
 - `uat.yaml`: Helm values file customized for the UAT environment.
 - Helm chart located in `helm/widgetario` .
 - Kubernetes commands and deployment manifests used for Part 7.
 
-## How to Deploy Part 7
-
-1. Ensure you have Kubernetes and Helm installed and configured.
+## How to Deploy
+ Ensure you have Kubernetes and Helm installed and configured.
 ![Screenshot 2025-05-16 174650](https://github.com/user-attachments/assets/cdb795d5-97bc-4590-864b-a42bc418285c)
 
-2. Edit the `uat.yaml` to reference your Docker Hub images if needed.
+##Troubleshooting Tips
+If pods show ImagePullBackOff:
+Ensure correct image name and tag in uat.yaml.
+Ensure image is publicly available on Docker Hub.
 
-3. Deploy the Helm chart:
 
-```bash
-helm install widg-uat ./helm/widgetario -f hackathon/files/helm/uat.yaml -n widg-uat --create-namespace
-Check pod status:
 
-bash
-Copy
-Edit
+
 kubectl get pods -n widg-uat
 Forward port and access the app:
 
