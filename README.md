@@ -14,15 +14,43 @@
 *This demonstrates the working nodes and services in the Kubernetes cluster.*
 
 
-## Part 3
-Application Components
-Identified microservices: Products API, Products DB, Stock API, and Web.
+
+##Part 3 - Storage
+Objective:
+Improve application resilience and performance by configuring cache persistence and transitioning to a replicated PostgreSQL database setup in Kubernetes.
+
+What was done:
+Enabled Persistent Caching for the Stock API:
+
+Configured a Kubernetes emptyDir volume mounted at /cache to retain cache data across Pod restarts (non-persistent but survives restarts).
+
+Replaced old single-instance database with a replicated PostgreSQL setup:
+
+Updated API configurations:
+
+products-api connects to the primary database instance.
+
+stock-api connects to the secondary instance (read-only).
+
+Applied and restarted the APIs to load the new config
 
 ## Part 4 
-Helm Introduction
-Created Helm chart for application components in widgetario/.
-Defined templates for deployment, service, ingress, and values.yaml.
+Objective:
+Expose services using standard HTTP ports and clean DNS names using an Ingress controller.
 
+What was done:
+Deployed an Ingress Controller (used from previous labs).
+
+Configured Ingress routes for:
+
+Web app: http://widgetario.local
+
+Products API: http://api.widgetario.local
+
+Configuration updates:
+Updated Kubernetes Ingress specs for web and products-api services.
+
+Verified DNS routing and ensured the application remained fully functional under the new domain names.
 ## Part 5
 Helm Chart Customization
 Customized chart with UAT-specific values in uat.yaml.
