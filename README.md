@@ -15,7 +15,7 @@
 
 
 
-##Part 3 - Storage
+## Part 3 
 Objective:
 Improve application resilience and performance by configuring cache persistence and transitioning to a replicated PostgreSQL database setup in Kubernetes.
 
